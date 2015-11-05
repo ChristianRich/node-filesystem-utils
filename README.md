@@ -1,12 +1,12 @@
 # Node FileSystem Utils
 
 
-### Installation
+## Installation
 ```js
 npm install node-filesystem-utils
 ```
 
-### Why?
+## Why?
 When using the native Node filesystem API you interact with a single file at any given time, which I find limiting.
 This module supports Java-style method overloading making it possible to pass a wider array of arguments.
 
@@ -20,7 +20,7 @@ Features:
 * Count the number of files in a directory (non recursive)
 * Get File Objects from a file containing the file's mimetype, name, dir, path and extension
 
-### Examples
+## Examples
 
 ### Save multiple files
 ```js
@@ -92,13 +92,14 @@ fileUtils.copy('/Users/christianrich/folder1/', '/Users/christianrich/may-or-may
     if(err) throw err;
 });
 ```
+
 ### Get a file descriptor object
 ```js
 var fileUtils = require('node-filesystem-utils');
 var fo = fileUtils.getFileObject('/Users/christianrich/myFile.txt');
 ```
 
-Returns:
+Yields:
 
 ```js
 {
@@ -110,18 +111,54 @@ Returns:
 }
 ```
 
-### Test
+### Append JSON to existing files
+Assume we have the file 'example.json' saved on disc:
+```js
+{
+    "myData": []
+}
+```
+
+Let's manipulate the file and append an element to the 'myData' array.
+First create a modifer function. This makes it possible to interact with the JSON structure in any which way you like hence decoupling the data modification from the file IO operation:
+
+```js
+var modifier = function(jsonObj, appendData, cb){
+    jsonObj.data.push(appendData);
+    cb(json);
+};
+```
+
+Load the file passing in the modifier:
+
+```js
+fileUtil.appendJson('/Users/christianrich/example.json', 'hello', modifier, function(err, file){
+    if(err) throw err;
+});
+```
+
+Now the file on disc looks like this:
+```js
+{
+    "myData": ['hello']
+}
+```
+
+## Test
 ```js
 mocha ./test
 ```
 
-### Limitations
+## Limitations
 Only tested on Mac and Linux file systems. Will probably not work on Windows OS.
 
-### File and folder permissions
+## File and folder permissions
 When accessing files and folders the logged in user must have permissions to access these.
 E.g on Amazon AWS EC2 Linux instances, if the default ec2-user tries to access folders above the /home directory you'll get EACCESS errors.
 
-### My blog
+## My blog
 [http://chrisrich.io](http://chrisrich.io)
+
+## License
+MIT
 
