@@ -28,19 +28,19 @@ var fileUtils = require('node-filesystem-utils');
 
 var manifest = [
     {
-        path: '/Users/christianrich/test'),
+        path: '/Users/christianrich/test',
         filename: 'file1.txt',
         data: 'this is same text for the 1st file'
     },
 
     {
-        path: '/Users/christianrich/test'),
+        path: '/Users/christianrich/test',
         filename: 'file1.txt',
         data: 'this is same text for the 2nd file'
     },
 
     {
-        path: '/Users/christianrich/test'),
+        path: '/Users/christianrich/test',
         filename: 'file3.txt',
         data: 'this is same text for the 3rd file'
     }
@@ -67,6 +67,8 @@ fileUtil.readFiles(manifest, 'utf8', function(err, files){
     console.log(files);
 }
 ```
+
+The returned files array has the same order as the manifest.
 
 ### Get the directory part of a path
 ```js
