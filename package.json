@@ -1,0 +1,50 @@
+{
+  "name": "node-filesystem-utils",
+  "version": "1.0.0",
+  "dependencies": {
+    "async": "^1.5.0",
+    "fs-extra": "^0.26.2",
+    "lodash": "^3.10.1",
+    "mime-types": "^2.1.7",
+    "uuid": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=4.2.1",
+    "npm": ">=2.14.7"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "/test"
+  ],
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "rimraf": "^2.4.3",
+    "should": "^7.1.1"
+  },
+  "description": "Node extended file system utilities",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Christian Rich <christianrich.me@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristianRich/natural-filename-generator/issues"
+  },
+  "homepage": "http://chrisrich.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristianRich/node-filesystem-utils.git"
+  },
+  "keywords": [
+    "file utils",
+    "file",
+    "recursive",
+    "copy",
+    "write",
+    "read"
+  ]
+}
